@@ -1,0 +1,9 @@
+class PassFailCheck {
+    public static void main(String[] args) {
+	
+        int subject1 = 45, subject2 = 35, subject3 = 50;
+        int failCount = (subject1 <= 40 ? 1 : 0) + (subject2 <= 40 ? 1 : 0) + (subject3 <= 40 ? 1 : 0);
+
+        System.out.println(failCount == 0 ? "The student passes." : "The student fails in " + failCount + " subject(s).");
+    }
+}

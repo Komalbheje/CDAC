@@ -1,0 +1,14 @@
+
+public class Main {
+public static void main(String[] args) {
+int x = y + 10;
+System.out.println(x);
+}
+}
+
+    public static void main(String[] args) {
+        int y = 5; // Declare the variable y
+        int x = y + 10;
+        System.out.println(x);
+    }
+}
