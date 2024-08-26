@@ -1,0 +1,228 @@
+Section 1: Snippets-22/08/24
+Snippet 1: InfiniteForLoop
+public class InfiniteForLoop {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i--) {
+            System.out.println(i);
+        }
+    }
+}
+Error Explanation: The loop runs infinitely because the loop control variable i is being decremented (i--) instead of incremented. Since i starts from 0 and is decremented each time, it will never reach 10, so the condition i < 10 remains true forever.
+
+Correction: The loop control variable should be incremented (i++) to eventually break the loop.
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+
+Snippet 2: IncorrectWhileCondition
+public class IncorrectWhileCondition {
+    public static void main(String[] args) {
+        int count = 5;
+        while (count = 0) {
+            System.out.println(count);
+            count--;
+        }
+    }
+}
+Error Explanation: The condition count = 0 is an assignment, not a comparison. This sets count to 0 and evaluates to false (because 0 is false in boolean context), so the loop never runs.
+
+Correction: The condition should use == for comparison.
+while (count == 0) {
+    System.out.println(count);
+    count--;
+}
+However, this would still not execute because count is initialized to 5. So,
+while (count > 0) {
+    System.out.println(count);
+    count--;
+}
+
+Snippet 3: DoWhileIncorrectCondition
+public class DoWhileIncorrectCondition {
+    public static void main(String[] args) {
+        int num = 0;
+        do {
+            System.out.println(num);
+            num++;
+        } while (num > 0);
+    }
+}
+Error Explanation: The loop only executes once because after the first iteration, num becomes 1, and the condition num > 0 is true, but once num exceeds 0, it keeps increasing, and the loop will continue indefinitely.
+
+Correction: To make the loop execute only once or a specific number of times,
+do {
+    System.out.println(num);
+    num++;
+} while (num < 5);
+
+
+Snippet 4: OffByOneErrorForLoop
+public class OffByOneErrorForLoop {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i);
+        }
+    }
+}
+Error Explanation: The loop runs from 1 to 10, inclusive, printing 1 to 10. However, if the task expected only numbers from 1 to 9, the loop is running one iteration too many.
+
+Correction: Adjust the loop to end at 9.
+for (int i = 1; i < 10; i++) {
+    System.out.println(i);
+}
+
+Snippet 5: WrongInitializationForLoop
+public class WrongInitializationForLoop {
+    public static void main(String[] args) {
+        for (int i = 10; i >= 0; i++) {
+            System.out.println(i);
+        }
+    }
+}
+Error Explanation: The loop does not decrement i, so it runs infinitely, printing 10 repeatedly.
+
+Correction: Decrement i in the loop.
+for (int i = 10; i >= 0; i--) {
+    System.out.println(i);
+}
+
+
+Snippet 6: MisplacedForLoopBody
+public class MisplacedForLoopBody {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++)
+            System.out.println(i);
+        System.out.println("Done");
+    }
+}
+Error Explanation: The "Done" message prints only once because it is outside the loop and not part of the loop body.
+
+Correction: Enclose the loop body in {} to include all statements.
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+    System.out.println("Done");
+}
+
+
+Snippet 7: UninitializedWhileLoop
+public class UninitializedWhileLoop {
+    public static void main(String[] args) {
+        int count;
+        while (count < 10) {
+            System.out.println(count);
+            count++;
+        }
+    }
+}
+Error Explanation: The variable count is used before it is initialized, which causes a compilation error.
+
+Correction: Initialize count before using it in the loop.
+int count = 0;
+while (count < 10) {
+    System.out.println(count);
+    count++;
+}
+
+
+Snippet 8: OffByOneDoWhileLoop
+public class OffByOneDoWhileLoop {
+    public static void main(String[] args) {
+        int num = 1;
+        do {
+            System.out.println(num);
+            num--;
+        } while (num > 0);
+    }
+}
+Error Explanation: The loop prints 1 and then decrements num to 0, at which point the loop stops because num > 0 is false.
+
+Correction: should initialize num to 5 and adjust the loop.
+int num = 5;
+do {
+    System.out.println(num);
+    num--;
+} while (num > 0);
+
+
+Snippet 9: InfiniteForLoopUpdate
+public class InfiniteForLoopUpdate {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i += 2) {
+            System.out.println(i);
+        }
+    }
+}
+Error Explanation: The loop does not run infinitely; however, it does not print all numbers from 0 to 4. It prints 0, 2, and 4 because i is incremented by 2 each time.
+
+Correction: increment i by 1 instead of 2.
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+
+
+Snippet 10: IncorrectWhileLoopControl
+public class IncorrectWhileLoopControl {
+    public static void main(String[] args) {
+        int num = 10;
+        while (num = 10) {
+            System.out.println(num);
+            num--;
+        }
+    }
+}
+Error Explanation: The condition num = 10 is an assignment, not a comparison. It assigns 10 to num, which is always true, leading to an infinite loop.
+
+Correction: Use == for comparison.
+while (num == 10) {
+    System.out.println(num);
+    num--;
+}
+However, this will still lead to a single iteration loop. If you want to print numbers from 10 downwards:
+while (num > 0) {
+    System.out.println(num);
+    num--;
+}
+
+
+Snippet 11: IncorrectLoopUpdate
+public class IncorrectLoopUpdate {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 5) {
+            System.out.println(i);
+            i += 2; // Error: This may cause unexpected results in output
+        }
+    }
+}
+Error Explanation: The loop prints 0 and 2, and then increments i by 2, which makes it 4, so it prints 4. After this, i becomes 6, and the loop exits.
+
+Correction: To print all numbers from 0 to 4, increment i by 1:
+while (i < 5) {
+    System.out.println(i);
+    i++;
+}
+
+
+Snippet 12: LoopVariableScope
+public class LoopVariableScope {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            int x = i * 2;
+        }
+        System.out.println(x); // Error: 'x' is not accessible here
+    }
+}
+Error Explanation: The variable x is declared inside the loop, so it is out of scope outside the loop, leading to a compilation error when accessed outside.
+
+Correction: Declare x outside the loop,
+
+int x = 0;
+for (int i = 0; i < 5; i++) {
+    x = i * 2;
+}
+System.out.println(x);
+Alternatively, if you only need to print x within the loop:
+for (int i = 0; i < 5; i++) {
+    int x = i * 2;
+    System.out.println(x);
+}
